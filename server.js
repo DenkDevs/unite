@@ -3,8 +3,8 @@ const cors = require("cors");
 const app = express();
 const PORT = process.env.PORT || 3333;
 const axios = require("axios");
-
 // Firestore Initialization
+const functions = require("firebase-functions");
 const {
 	initializeApp,
 	applicationDefault,
@@ -260,6 +260,8 @@ app.get("/organizations/:orgName/events", async (req, res) => {
 // TODO DELETE /organizations/:id/events/:eventId: Delete an event of a club
 
 // Listen to Server
-app.listen(PORT, () => {
-	console.log(`Server is running on port ${PORT}`);
-});
+// app.listen(PORT, () => {
+// 	console.log(`Server is running on port ${PORT}`);
+// });
+
+exports.api = functions.https.onRequest(app);
