@@ -189,7 +189,7 @@ app.post("/clubs/:id/join/:userId", async (req, res) => {});
 // Get all events
 app.get("/get-all-events", async (req, res) => {
 	const snapshot = await db.collection("events").get();
-	const events = [];
+	const events = {};
 
 	snapshot.forEach((doc) => {
 		let id = doc.id;
